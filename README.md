@@ -3,7 +3,7 @@
 ### MAY NOT WORK ACROSS ALL VERSIONS AND EDITIONS
 
 ## Tested on:
-- XB360 Edition (Old Format)
+- XB360 Edition (New Format)
 
 <br>
 <br>
