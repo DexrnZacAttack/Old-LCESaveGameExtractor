@@ -3,8 +3,8 @@
 ### MAY NOT WORK ACROSS ALL VERSIONS AND EDITIONS
 
 ## Tested on:
-- XB360 Edition (New Format)
-- PS3 Edition (equiv to JE 1.0)
+- XB360 Edition (TU75)
+- PS3 Edition (1.0.0)
 <br>
 <br>
 
