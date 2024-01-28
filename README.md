@@ -4,7 +4,7 @@
 
 ## Tested on:
 - XB360 Edition (New Format)
-
+- PS3 Edition (equiv to JE 1.0)
 <br>
 <br>
 
