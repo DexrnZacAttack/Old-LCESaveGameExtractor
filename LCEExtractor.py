@@ -1,10 +1,23 @@
 import os
+import sys
 
 # Based off of https://www.xpgamesaves.com/threads/advanced-minecraft-savegame-dat-structure-editing.49608/
 
+if len(sys.argv) < 2:
+    raise FileNotFoundError("Please provide a filename.\n{} <filename>".format(os.path.basename(__file__)))
+
+fileName = sys.argv[1]
+
 # Dexrn: read the savegame (MUST BE DECOMPRESSED)
-fileName = "savegame-decompressed.dat"
 with open(fileName, "rb") as saveGame:
+    try:
+        header = saveGame.read(3).decode("ascii")
+        if header == "CON" or header == "PIRS":
+            print(f"You must decompress this file manually, as it comes from Xbox 360 Edition.\nThere are multiple tools to do this, I recommend Horizon. (https://www.wemod.com/horizon)\nYou'll also need to get something to handle XMemcompress/LZX, as this tool will not decompress that.")
+            sys.exit()
+    except Exception as e:
+        pass
+    saveGame.seek(0)
     fileOffset = int.from_bytes(saveGame.read(4), byteorder="big")
     fileCount = int.from_bytes(saveGame.read(4), byteorder="big")
     print(f"The index begins at offset {fileOffset}.\nThere are {fileCount} files mentioned in the index.")
@@ -44,3 +57,6 @@ with open("index.dat", "rb") as f:
                 saveGameFiles.write(data)
 
             print(f"Saved {fileNameFromSaveGame}")
+
+
+            
