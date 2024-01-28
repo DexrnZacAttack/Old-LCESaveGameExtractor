@@ -22,7 +22,7 @@ with open("index.dat", "rb") as f:
         line = f.read(144)
         if not line:
             break
-        fileNameFromSaveGame = line[:80].decode("ascii").rstrip("\x00")
+        fileNameFromSaveGame = line[:80].decode("ascii").replace("\x00", "")
         # print(line[120:128])
         # print(line[128:136])
         length = int.from_bytes(line[128:132], byteorder="big")
@@ -31,8 +31,14 @@ with open("index.dat", "rb") as f:
 
                 
         with open(fileName, "rb") as saveGame:
-            # Dexrn: yes I am replacing / with the word Slash... IDK what else to replace it with LMAO
-            with open(fileNameFromSaveGame.replace("\x00", "").replace("/", "Slash"), "wb") as saveGameFiles:
+            if not os.path.exists("LCESaveGameExtractor"):
+                os.mkdir("LCESaveGameExtractor")
+            if "/" in fileNameFromSaveGame:
+                if not os.path.exists("LCESaveGameExtractor\\" + fileNameFromSaveGame[:fileNameFromSaveGame.index("/")]):
+                    # https://stackoverflow.com/questions/27387415/how-would-i-get-everything-before-a-in-a-string-python
+                    os.mkdir("LCESaveGameExtractor\\" + fileNameFromSaveGame[:fileNameFromSaveGame.index("/")])
+            # Dexrn: replace / with \ so that Windows treats it as a directory.
+            with open("LCESaveGameExtractor\\" + fileNameFromSaveGame.replace("/", '\\'), "wb") as saveGameFiles:
                 saveGame.seek(offset)
                 data = saveGame.read(length)
                 saveGameFiles.write(data)
