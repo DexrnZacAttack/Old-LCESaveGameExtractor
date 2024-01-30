@@ -5,6 +5,7 @@
 ## Tested on:
 - XB360 Edition (TU75)
 - PS3 Edition (1.0.0)
+- Wii U Edition (latest)
 <br>
 <br>
 
