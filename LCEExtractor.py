@@ -6,11 +6,15 @@ import zlib
 
 if len(sys.argv) < 2:
     raise FileNotFoundError(
-        "Please provide a filename.\n{} <filename>".format(os.path.basename(__file__))
+        "Please provide a filename.\n{} <filename> <endianness> (default is big)".format(os.path.basename(__file__))
     )
 
 fileName = sys.argv[1]
-
+# Dexrn ----------------------------
+# Because for some reason switch uses little endian... I had to implement this to allow switching between them.
+# Switch: Little Endian
+# Everything else: Big Endian
+endianness = sys.argv[2] if len(sys.argv) > 2 else 'big'
 
 def handleZLib(data, start_index):
     pData = data[start_index:]
@@ -29,7 +33,7 @@ def checkSaveGame(fileName):
             unZLibsG = handleZLib(saveGame.read(), 8)
             with open(fileName + "_ZFlate", "wb") as f:
                 f.write(unZLibsG)
-
+                saveGame.seek(0)
             return open(fileName + "_ZFlate", "rb")
         else:
             return open(fileName, "rb")
@@ -38,7 +42,7 @@ def checkSaveGame(fileName):
 def start():
     saveGame = checkSaveGame(fileName)
     saveGame.seek(0)
-
+    
     try:
         header = saveGame.read(3).decode("ascii")
         if header == "CON" or header == "PIRS":
@@ -50,8 +54,9 @@ def start():
         pass
 
     saveGame.seek(0)
-    fileOffset = int.from_bytes(saveGame.read(4), byteorder="big")
-    fileCount = int.from_bytes(saveGame.read(4), byteorder="big")
+    # Dexrn: WHY IS THE SWITCH USING LITTLE ENDIAN INSTEAD OF BIG
+    fileOffset = int.from_bytes(saveGame.read(4), byteorder=endianness)
+    fileCount = int.from_bytes(saveGame.read(4), byteorder=endianness)
     saveGame.seek(0)
     print(
         f"The index begins at offset {fileOffset}.\nThere are {fileCount} files mentioned in the index."
@@ -73,8 +78,8 @@ def start():
             fileNameFromSaveGame = line[:80].decode("ascii").replace("\x00", "")
             # print(line[120:128])
             # print(line[128:136])
-            length = int.from_bytes(line[128:132], byteorder="big")
-            offset = int.from_bytes(line[132:136], byteorder="big")
+            length = int.from_bytes(line[128:132], byteorder=endianness)
+            offset = int.from_bytes(line[132:136], byteorder=endianness)
             print(
                 f"Filename: {fileNameFromSaveGame}, Length: {length}, Offset: {offset}"
             )
