@@ -1,6 +1,6 @@
 # Minecraft: Nintendo Switch Edition
 
-### Everything is in little endian, as opposed to other editions using big endian for their save formats.
+### This edition uses Little Endian instead of Big Endian which PS3, Wii U, and Xbox 360 edition use.
 ### It seems that entities are stored seperate, inside entities.dat which looks to be a modified version of Infdev 627's entities.dat.
 #### NSWE
 ![Dexrn_HxD_z8CdKmZYxa_01-31-2024_03_02_13_167_AM](https://github.com/DexrnZacAttack/LCESaveGameExtractor/assets/60078656/d6a97dad-5965-473c-af5d-512d2ab291bd)
