@@ -3,10 +3,10 @@
 ### MAY NOT WORK ACROSS ALL VERSIONS AND EDITIONS
 
 ## Tested on:
-- XB360 Edition (TU75)
-- PS3 Edition (1.0.0)
+- Xbox 360 Edition (TU75)
+- Playstation 3 Edition (1.0.0)
 - Wii U Edition (latest)
-- [Switch](/docs/NSWE.md)
+- [Nintendo Switch Edition](/docs/NSWE.md)
 <br>
 <br>
 
