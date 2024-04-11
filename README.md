@@ -6,6 +6,7 @@
 - Xbox 360 Edition (TU75)
 - Playstation 3 Edition (1.0.0)
 - Wii U Edition (latest)
+- PS4 Edition (latest)
 - [Nintendo Switch Edition](/docs/NSWE.md)
 <br>
 <br>
