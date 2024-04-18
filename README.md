@@ -1,3 +1,7 @@
+# NOTICE:
+### This project is NOT being actively worked on, rather a different project that expands on this is being focused on.
+### https://dexrnzacattack.github.io/SGExtractor
+
 # LCE Savegame extractor
 
 ### MAY NOT WORK ACROSS ALL VERSIONS AND EDITIONS
