@@ -1,6 +1,6 @@
 # NOTICE:
-### This project is NOT being actively worked on, rather a different project that expands on this is being focused on.
-### https://dexrnzacattack.github.io/SGExtractor
+### This project is NOT being actively worked on... Instead, a different project which expands on this is being focused on.
+### https://dexrnzacattack.github.io/LCEE
 
 # LCE Savegame extractor
 
